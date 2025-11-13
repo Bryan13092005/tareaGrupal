@@ -3,7 +3,6 @@ import Personas.subclasesEmpleado.BalconServicios;
 import Personas.subclasesEmpleado.Cajero;
 import Personas.subclasesEmpleado.JefeAgencia;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 import static ejecucion.Main.*;
@@ -118,7 +117,7 @@ public class Empleado extends Persona {
             switch (opcion) {
                 case 1:
                     for (Cajero c : cajeros) {
-                        if (Objects.equals(c.getRol(), "Cajero")) {
+                        if (c.getRol().equals("Cajero")) {
                             System.out.println("ACCESO CONCEDIDO BIENVENIDO " + c.getNombre());
                             entrar=true;
                             c.menuCajeros(datos);
@@ -131,7 +130,7 @@ public class Empleado extends Persona {
                     break;
                 case 2:
                     for(BalconServicios b:balconesServicios){
-                        if (Objects.equals(b.getRol(), "Balcon")){
+                        if (b.getRol().equals("Balcon")){
                             System.out.println("ACCESO CONCEDIDO BIENVENIDO "+b.getNombre());
                             entrar=true;
                             b.menuBalcon(datos);

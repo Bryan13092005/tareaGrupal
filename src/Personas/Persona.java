@@ -1,5 +1,4 @@
 package Personas;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static ejecucion.Main.clientes;
@@ -76,7 +75,7 @@ public abstract class Persona {
                 throw new Exception("Cedula incorrecta");
             } else{
                 for(Cliente c:clientes){
-                    if (Objects.equals(c.getCedula(), cedula)){
+                    if (c.getCedula().equals(cedula)){
                         System.out.println("El usuario ya existe");
                         this.cedula=null;
                     }

@@ -1,7 +1,6 @@
 package Personas;
 import Cuenta.Cuenta;
 
-import java.util.Objects;
 import java.util.Scanner;
 import static ejecucion.Main.cuentas;
 import static ejecucion.Main.clientes;
@@ -119,7 +118,7 @@ public class Cliente extends Persona {
         boolean encontrado = false;
 
         for (Cuenta c : cuentas) {
-            if (Objects.equals(c.getCedula(), getCedula())) {
+            if (c.getCedula().equals(getCedula())) {
                 encontrado = true;
 
                 if (solicitarPrestamo) {
@@ -156,7 +155,7 @@ public class Cliente extends Persona {
                 case 1:
                     if (this.cuenta) {
                         for (Cuenta c : cuentas) {
-                            if (Objects.equals(c.getCedula(), getCedula())) {
+                            if (c.getCedula().equals(getCedula())) {
                                 System.out.println("Saldo: "+c.getSaldo());
                                 encontrado=true;
                                 break;

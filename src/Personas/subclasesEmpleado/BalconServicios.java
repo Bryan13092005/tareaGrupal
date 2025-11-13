@@ -3,7 +3,6 @@ package Personas.subclasesEmpleado;
 import Personas.Cliente;
 import Personas.Empleado;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import static Personas.Cliente.validacionCreacionClientes;
