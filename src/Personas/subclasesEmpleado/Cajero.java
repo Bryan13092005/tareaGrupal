@@ -20,11 +20,12 @@ public class Cajero extends Empleado {
                 System.out.print("1.Depositar\n2.Retirar\n3.Cerrar Cuenta\n4.Cerrar Sesion\nIngrese una opcion: ");
                 int opcion = datos.nextInt();
                 datos.nextLine();
-                System.out.print("Ingrese el numero de cedula de la cuenta: ");
-                String cedula = datos.nextLine();
+                String cedula="";
                 boolean encontrado = false;
                 switch (opcion) {
                     case 1:
+                        System.out.print("Ingrese el numero de cedula de la cuenta: ");
+                        cedula = datos.nextLine();
                         for (Cuenta c : cuentas) {
                             if (!cedula.trim().isEmpty() && cedula.length() == 10 && cedula.trim().equals(c.getCedula())) {
                                 System.out.print("Ingrese el monto a dopsitar: $");
@@ -40,6 +41,8 @@ public class Cajero extends Empleado {
                         }
                         break;
                     case 2:
+                        System.out.print("Ingrese el numero de cedula de la cuenta: ");
+                        cedula = datos.nextLine();
                         for (Cuenta c : cuentas) {
                             if (!cedula.trim().isEmpty() && cedula.length() == 10 && cedula.trim().equals(c.getCedula())) {
                                 System.out.print("Ingrese el monto a retirar: $");
@@ -55,6 +58,8 @@ public class Cajero extends Empleado {
                         }
                         break;
                     case 3:
+                        System.out.print("Ingrese el numero de cedula de la cuenta: ");
+                        cedula = datos.nextLine();
                         for (int i = 0; i < cuentas.size(); i++) {
                             if (!cedula.trim().isEmpty() && cedula.length() == 10 && cedula.trim().equals(cuentas.get(i).getCedula())) {
                                 System.out.print("Esta seguro de eliminar la cuenta? con un saldo de : " + cuentas.get(i).getSaldo() + " (S/N)");
