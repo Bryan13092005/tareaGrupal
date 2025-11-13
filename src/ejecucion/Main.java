@@ -21,10 +21,6 @@ public class Main {
     public static ArrayList<BalconServicios> balconesServicios=new ArrayList<>();
     public static ArrayList<JefeAgencia> jefesAgencias=new ArrayList<>();
 
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
     public static void main(String[] args) {
         Scanner datos = new Scanner(System.in);
         System.out.println("CREANDO EMPLEADO DEFAUTL");
