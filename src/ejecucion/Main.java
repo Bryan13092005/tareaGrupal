@@ -88,8 +88,8 @@ public class Main {
                         break;
                 }
             } catch (InputMismatchException e) {
-            System.out.println("⚠️ Error: Debes ingresar un número válido.");
-            datos.nextLine();
+                System.out.println("⚠️ Error: Debes ingresar un número válido.");
+                datos.nextLine();
         }
         }while (true);
 

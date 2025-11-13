@@ -3,6 +3,7 @@ import Personas.subclasesEmpleado.BalconServicios;
 import Personas.subclasesEmpleado.Cajero;
 import Personas.subclasesEmpleado.JefeAgencia;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static ejecucion.Main.*;
@@ -109,57 +110,62 @@ public class Empleado extends Persona {
 
     public void menuEmpleados(Scanner datos){
         do {
-            System.out.println("______________MENU INGRESO EMPLEADOS____________");
-            System.out.print("1.Cajero\n2.Balcon\n3.Jefe Agencia\n4.Regresar\nIngresa tu rol: ");
-            int opcion= datos.nextInt();
-            datos.nextLine();
-            boolean entrar=false;
-            switch (opcion) {
-                case 1:
-                    for (Cajero c : cajeros) {
-                        if (c.getRol().equals("Cajero")) {
-                            System.out.println("ACCESO CONCEDIDO BIENVENIDO " + c.getNombre());
-                            entrar=true;
-                            c.menuCajeros(datos);
-                            break;
+            try {
+                System.out.println("______________MENU INGRESO EMPLEADOS____________");
+                System.out.print("1.Cajero\n2.Balcon\n3.Jefe Agencia\n4.Regresar\nIngresa tu rol: ");
+                int opcion = datos.nextInt();
+                datos.nextLine();
+                boolean entrar = false;
+                switch (opcion) {
+                    case 1:
+                        for (Cajero c : cajeros) {
+                            if (c.getRol().equals("Cajero")) {
+                                System.out.println("ACCESO CONCEDIDO BIENVENIDO " + c.getNombre());
+                                entrar = true;
+                                c.menuCajeros(datos);
+                                break;
+                            }
                         }
-                    }
-                    if(!entrar){
-                        System.out.println("Rol incorrecto");
-                    }
-                    break;
-                case 2:
-                    for(BalconServicios b:balconesServicios){
-                        if (b.getRol().equals("Balcon")){
-                            System.out.println("ACCESO CONCEDIDO BIENVENIDO "+b.getNombre());
-                            entrar=true;
-                            b.menuBalcon(datos);
-                            break;
+                        if (!entrar) {
+                            System.out.println("Rol incorrecto");
                         }
-                    }
-                    if(!entrar){
-                        System.out.println("Rol incorrecto");
-                    }
-                    break;
-                case 3:
-                    for(JefeAgencia j:jefesAgencias){
-                        if (j.getRol().equals("Jefe Agencia")){
-                            System.out.println("ACCESO CONCEDIDO BIENVENIDO "+j.getNombre());
-                            entrar=true;
-                            j.menuJefeAgencia(datos);
-                            break;
+                        break;
+                    case 2:
+                        for (BalconServicios b : balconesServicios) {
+                            if (b.getRol().equals("Balcon")) {
+                                System.out.println("ACCESO CONCEDIDO BIENVENIDO " + b.getNombre());
+                                entrar = true;
+                                b.menuBalcon(datos);
+                                break;
+                            }
                         }
-                    }
-                    if(!entrar){
-                        System.out.println("Rol incorrecto");
-                    }
-                    break;
-                case 4:
-                    System.out.println("Regresando al menu principal");
-                    return;
-                default:
-                    System.out.println("Opcion incorrecta");
-                    break;
+                        if (!entrar) {
+                            System.out.println("Rol incorrecto");
+                        }
+                        break;
+                    case 3:
+                        for (JefeAgencia j : jefesAgencias) {
+                            if (j.getRol().equals("Jefe Agencia")) {
+                                System.out.println("ACCESO CONCEDIDO BIENVENIDO " + j.getNombre());
+                                entrar = true;
+                                j.menuJefeAgencia(datos);
+                                break;
+                            }
+                        }
+                        if (!entrar) {
+                            System.out.println("Rol incorrecto");
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Regresando al menu principal");
+                        return;
+                    default:
+                        System.out.println("Opcion incorrecta");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("⚠️ Error: Debes ingresar un número válido.");
+                datos.nextLine();
             }
         }while (true);
     }

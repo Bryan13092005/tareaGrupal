@@ -1,4 +1,5 @@
 package Personas;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static ejecucion.Main.clientes;
@@ -18,29 +19,34 @@ public abstract class Persona {
     public abstract void pedirDatos(Scanner datos);
 
     public void actualizarDatos(Scanner datos){
-        System.out.println("______________MENU ACTUALIZACION DE DATOS____________");
-        System.out.print("1.Actualizar nombre\n2.Actualizar cedula\n3.Actualizar direccion\n4.Actualizar telefono\n5.Regresasr\nIngrese una opcion: ");
-        int opcion= datos.nextInt();
-        datos.nextLine();
-        switch (opcion){
-            case 1:
-                setNombre(datos.nextLine());
-                break;
-            case 2:
-                setCedula(datos.nextLine());
-                break;
-            case 3:
-                setDireccion(datos.nextLine());
-                break;
-            case 4:
-                setTelefono(datos.nextLine());
-                break;
-            case 5:
-                System.out.println("Saliendo");
-                return;
-            default:
-                System.out.println("Opcion Incorrecta");
-                break;
+        try {
+            System.out.println("______________MENU ACTUALIZACION DE DATOS____________");
+            System.out.print("1.Actualizar nombre\n2.Actualizar cedula\n3.Actualizar direccion\n4.Actualizar telefono\n5.Regresasr\nIngrese una opcion: ");
+            int opcion = datos.nextInt();
+            datos.nextLine();
+            switch (opcion) {
+                case 1:
+                    setNombre(datos.nextLine());
+                    break;
+                case 2:
+                    setCedula(datos.nextLine());
+                    break;
+                case 3:
+                    setDireccion(datos.nextLine());
+                    break;
+                case 4:
+                    setTelefono(datos.nextLine());
+                    break;
+                case 5:
+                    System.out.println("Saliendo");
+                    return;
+                default:
+                    System.out.println("Opcion Incorrecta");
+                    break;
+            }
+        }catch (InputMismatchException e){
+            System.out.println("⚠️ Error: Debes ingresar un número válido.");
+            datos.nextLine();
         }
     }
     public abstract void mostrarRol();

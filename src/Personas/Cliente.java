@@ -1,6 +1,6 @@
 package Personas;
 import Cuenta.Cuenta;
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import static ejecucion.Main.cuentas;
 import static ejecucion.Main.clientes;
@@ -147,40 +147,46 @@ public class Cliente extends Persona {
 
     public void menuClientes(Scanner datos){
         do {
-            System.out.print("1.Ver tu saldo\n2.Abrir Cuenta Bancaria\n3.Solicitar Prestamo\n4.Salir\nIngrese una opcion: ");
-            int opcion = datos.nextInt();
-            datos.nextLine();
-            boolean encontrado=false;
-            switch (opcion) {
-                case 1:
-                    if (this.cuenta) {
-                        for (Cuenta c : cuentas) {
-                            if (c.getCedula().equals(getCedula())) {
-                                System.out.println("Saldo: "+c.getSaldo());
-                                encontrado=true;
-                                break;
+            try {
+                System.out.println("_____________MENU CLIENTES__________");
+                System.out.print("1.Ver tu saldo\n2.Abrir Cuenta Bancaria\n3.Solicitar Prestamo\n4.Salir\nIngrese una opcion: ");
+                int opcion = datos.nextInt();
+                datos.nextLine();
+                boolean encontrado = false;
+                switch (opcion) {
+                    case 1:
+                        if (this.cuenta) {
+                            for (Cuenta c : cuentas) {
+                                if (c.getCedula().equals(getCedula())) {
+                                    System.out.println("Saldo: " + c.getSaldo());
+                                    encontrado = true;
+                                    break;
+                                }
                             }
-                        }
 
-                         if(!encontrado) {
-                            System.out.println("Cuenta no encontrada");
-                         }
-                    } else {
-                        System.out.println("Para ver tu saldo primero debes crear una cuenta");
-                    }
-                    break;
-                case 2:
-                    crearCuenta();
-                    break;
-                case 3:
-                    prestamo(datos);
-                    break;
-                case 4:
-                    System.out.println("Regresando al menu principal");
-                    return;
-                default:
-                    System.out.println("Opcion incorrecta");
-                    break;
+                            if (!encontrado) {
+                                System.out.println("Cuenta no encontrada");
+                            }
+                        } else {
+                            System.out.println("Para ver tu saldo primero debes crear una cuenta");
+                        }
+                        break;
+                    case 2:
+                        crearCuenta();
+                        break;
+                    case 3:
+                        prestamo(datos);
+                        break;
+                    case 4:
+                        System.out.println("Regresando al menu principal");
+                        return;
+                    default:
+                        System.out.println("Opcion incorrecta");
+                        break;
+                }
+            }catch (InputMismatchException e){
+                System.out.println("⚠️ Error: Debes ingresar un número válido.");
+                datos.nextLine();
             }
         }while (true);
     }
