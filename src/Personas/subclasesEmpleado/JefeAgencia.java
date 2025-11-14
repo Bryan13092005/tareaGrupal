@@ -24,14 +24,28 @@ public class JefeAgencia extends Empleado {
                 datos.nextLine();
                 switch (opcion) {
                     case 1:
+                        char prestamo;
                         for (Cliente c : clientes) {
                             if (c.getSolicitarPrestamo()) {
                                 for (Cuenta cu : cuentas) {
+                                    System.out.println("MOSTRANDO INFORMACION");
+                                    System.out.println("Cedula del usuario: "+cu.getCedula());
                                     if (c.getCedula().equals(cu.getCedula())) {
-                                        cu.deposito(c.getP());
-                                        System.out.println("Prestamo realizado con exito a " + c.getNombre());
-                                        c.setSolicitarPrestamo(false);
-                                        c.setP(0.00);
+                                        System.out.println("Nombre usuario: "+c.getNombre());
+                                        System.out.println("Monto: $"+c.getP());
+                                        System.out.print("Desea aprobar el prestamo? (S/N): ");
+                                        prestamo=datos.next().toUpperCase().charAt(0);
+                                        if (prestamo=='S'){
+                                            cu.deposito(c.getP());
+                                            System.out.println("Prestamo realizado con exito a " + c.getNombre()+"\n Monto: $"+c.getP());
+                                            c.setSolicitarPrestamo(false);
+                                            c.setP(0.00);
+                                        }else{
+                                            System.out.println("Prestamo no aprobado");
+                                            c.setSolicitarPrestamo(false);
+                                            c.setP(0.00);
+                                        }
+
                                     }
                                 }
                             }
